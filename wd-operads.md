@@ -1,65 +1,5 @@
 # WD-Operads: A Comprehensive Guide for Software Engineers
 
-- [WD-Operads: A Comprehensive Guide for Software Engineers](#wd-operads-a-comprehensive-guide-for-software-engineers)
-  - [What Are WD-Operads?](#what-are-wd-operads)
-  - [Core Intuition: Modular Composition](#core-intuition-modular-composition)
-  - [The Visual Language](#the-visual-language)
-    - [Basic Wiring Diagram Structure](#basic-wiring-diagram-structure)
-    - [Function Composition Example](#function-composition-example)
-    - [Multi-Input/Output Example](#multi-inputoutput-example)
-  - [Technical Structure](#technical-structure)
-    - [1. The Operad Definition](#1-the-operad-definition)
-    - [Visual Representation of Operadic Structure](#visual-representation-of-operadic-structure)
-    - [2. Operadic Composition](#2-operadic-composition)
-    - [Visual Example of Substitution](#visual-example-of-substitution)
-    - [3. Finite Presentation](#3-finite-presentation)
-    - [Visual Representation of Generators](#visual-representation-of-generators)
-  - [Software Engineering Analogies](#software-engineering-analogies)
-    - [1. Function Composition](#1-function-composition)
-    - [2. Database Queries](#2-database-queries)
-    - [3. Microservice Architecture](#3-microservice-architecture)
-    - [4. Build Systems](#4-build-systems)
-  - [Categorical Perspective](#categorical-perspective)
-    - [1. Operads as Compositional Structures](#1-operads-as-compositional-structures)
-    - [2. Relationship to Other Categorical Structures](#2-relationship-to-other-categorical-structures)
-    - [3. Algebraic Semantics](#3-algebraic-semantics)
-  - [Advanced Applications](#advanced-applications)
-    - [1. Recursive Systems](#1-recursive-systems)
-    - [2. Hierarchical Composition](#2-hierarchical-composition)
-    - [3. Typed Interfaces](#3-typed-interfaces)
-  - [Why This Matters for Software Engineering](#why-this-matters-for-software-engineering)
-    - [1. Rigorous Design](#1-rigorous-design)
-    - [2. Language Design](#2-language-design)
-    - [3. Automated Reasoning](#3-automated-reasoning)
-  - [Mathematical Foundations and Technical Details](#mathematical-foundations-and-technical-details)
-    - [Formal Definition of WD-Operad](#formal-definition-of-wd-operad)
-    - [Cospan Construction](#cospan-construction)
-    - [Visual Cospan Structure](#visual-cospan-structure)
-    - [Finite Presentation Theorem](#finite-presentation-theorem)
-    - [Operadic Composition Laws](#operadic-composition-laws)
-    - [Categorical Constructions](#categorical-constructions)
-    - [Semantic Interpretation](#semantic-interpretation)
-    - [Derivations and Proofs](#derivations-and-proofs)
-    - [Advanced Theoretical Results](#advanced-theoretical-results)
-    - [Computational Complexity](#computational-complexity)
-  - [Cross-Disciplinary Applications and Consequences](#cross-disciplinary-applications-and-consequences)
-    - [1. Software Engineering and Computer Science](#1-software-engineering-and-computer-science)
-    - [2. Artificial Intelligence and Machine Learning](#2-artificial-intelligence-and-machine-learning)
-    - [3. Systems Biology and Bioinformatics](#3-systems-biology-and-bioinformatics)
-    - [4. Economics and Finance](#4-economics-and-finance)
-    - [5. Physics and Engineering](#5-physics-and-engineering)
-    - [6. Urban Planning and Infrastructure](#6-urban-planning-and-infrastructure)
-  - [Modeling Implications and Consequences](#modeling-implications-and-consequences)
-    - [1. Model Composition and Reusability](#1-model-composition-and-reusability)
-    - [2. Scalability and Hierarchical Design](#2-scalability-and-hierarchical-design)
-    - [3. System Evolution and Maintenance](#3-system-evolution-and-maintenance)
-    - [4. Cross-Domain Model Translation](#4-cross-domain-model-translation)
-  - [Future Research Directions](#future-research-directions)
-    - [1. Computational Implementations](#1-computational-implementations)
-    - [2. Theoretical Extensions](#2-theoretical-extensions)
-    - [3. Industrial Applications](#3-industrial-applications)
-  - [References](#references)
-
 ## What Are WD-Operads?
 
 **WD-operads** (Wiring Diagram operads) are David Spivak's mathematical framework for formalizing modular, compositional systems. Think of them as the "mathematics of plug-and-play" - they provide rigorous foundations for any system where you connect outputs to inputs to build larger systems from smaller components.
@@ -87,16 +27,16 @@ A **wiring diagram** looks like a circuit:
 ### Basic Wiring Diagram Structure
 
 ```
-    ┌─────────────────────────────────────┐
-    │                                     │
- a ─┤ ●                               ● ├─ x
-    │  └─── [Box 1] ──┬── [Box 2] ──┘  │
- b ─┤ ●               │               ● ├─ y
-    │                 └── [Box 3] ──┘  │
- c ─┤ ●                               ● ├─ z
-    │                                     │
-    └─────────────────────────────────────┘
-      Input Interface              Output Interface
+    ┌───────────────────────────────────────┐
+    │                                       │
+ a ──┤ ●                                  ● ├── x
+    │   └─── [Box 1] ──┬── [Box 2] ─────┘   │
+ b ──┤ ●               │                  ● ├── y
+    │                  └── [Box 3] ─────┘   │
+ c ──┤ ●                                  ● ├── z
+    │                                       │
+    └───────────────────────────────────────┘
+      Input Interface                Output Interface
 ```
 
 ### Function Composition Example
@@ -156,9 +96,9 @@ Input signatures:     Output signature:
 ┌─────────────────────────────┐
 │ ● ●     ●               ● ● │
 │ a b     c    [BOXES]    x y │
-│  └───┬─┘                   │
-│      │   Internal wiring   │
-│      └─────────────────────│
+│  └───┬─┘                    │
+│      │   Internal wiring    │
+│      └──────────────────────│
 └─────────────────────────────┘
 ```
 
@@ -174,23 +114,23 @@ The key operation is **substitution**: given diagrams d₁ and d₂, you can sub
 
 ```
 Step 1: Start with diagram d₁
-┌─────────────────────────┐
-│ a ● ─── [BOX] ─── ● x   │
-│ b ● ─── [BOX] ─── ● y   │
-└─────────────────────────┘
+┌───────────────────────────┐
+│ a ●────── [BOX] ──────● x │
+│ b ●────── [BOX] ──────● y │
+└───────────────────────────┘
 
 Step 2: Have diagram d₂ to substitute
-┌─────────────────┐
-│ p ● ─ [f] ─ ● q │
-│ r ● ─ [g] ─ ● s │
-└─────────────────┘
+┌─────────────────────┐
+│ p ●──── [f] ────● q │
+│ r ●──── [g] ────● s │
+└─────────────────────┘
 
 Step 3: Substitute d₂ into first BOX of d₁
-┌─────────────────────────────────────┐
-│ a ● ─┬─ [f] ─┬─ [BOX] ─── ● x       │
-│      │       │                     │
-│ b ● ─┴─ [g] ─┴─ [BOX] ─── ● y       │
-└─────────────────────────────────────┘
+┌───────────────────────────────────────┐
+│ a ●───┬── [f] ──┬── [BOX] ──────● x   │
+│       │         │                     │
+│ b ●───┴── [g] ──┴── [BOX] ──────● y   │
+└───────────────────────────────────────┘
          ↑ d₂ substituted here
 ```
 
@@ -397,7 +337,7 @@ Inputs: S₁={a,b} + S₂={c}     Output: T={x,y}
     │  a b c    [BOXES]  x y          │
     │   └─┬─────────────┬─┘           │
     │     │ Connection  │             │
-    │     │  Graph     │             │
+    │     │  Graph      │             │
     └─────────────────────────────────┘
 ```
 
